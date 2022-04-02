@@ -1516,6 +1516,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: 4
   rotationSpeed: 720
+  candle: {fileID: 154558379}
+  attenuationSpeed: 0
+  rb: {fileID: 0}
 --- !u!58 &682043745
 CircleCollider2D:
   m_ObjectHideFlags: 0

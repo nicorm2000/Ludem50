@@ -9,9 +9,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float rotationSpeed;
     private float horizontal;
     private float vertical;
-    public Light candle;
-    public float attenuationSpeed;
+    [SerializeField] private Light candle;
+    [SerializeField] private float attenuationSpeed;
     private int candleTime;
+    private Rigidbody2D rb;
 
 
     void Start()
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
 
         candle.intensity -= attenuationSpeed * Time.deltaTime;
         candleTime = (int) (candle.intensity * 120);
+        print(candleTime);
     }
 
     void PlayerMovement()
