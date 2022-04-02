@@ -1,21 +1,30 @@
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-//public class Interactible : MonoBehaviour
-//{
-//    // Start is called before the first frame update
-//    [SerializeField] private bool isDestroyable = true;
+public class Interactible : MonoBehaviour
+{
+    bool isDestroyable = false;
+    // Start is called before the first frame update
+    void Start()
+    {
 
-//    private void OnTriggerStay2D(Collider2D collision)
-//    {
-//        if (collision.tag == "Player")
-//        {
-//            if (isDestroyable && Input.GetKeyDown(KeyCode.E))
-//            {
-//                Debug.Log("colisiona");
-//                Destroy(gameObject);
-//            }
-//        }
-//    }
-//}
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (isDestroyable && Input.GetKeyDown(KeyCode.E))
+        {
+            Destroy(gameObject);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        isDestroyable = true;
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isDestroyable = false;
+    }
+}
