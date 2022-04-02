@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float rotationSpeed;
     private float horizontal;
     private float vertical;
+    public Light candle;
+    public float attenuationSpeed;
+    private int candleTime;
 
 
     void Start()
@@ -22,6 +25,8 @@ public class PlayerController : MonoBehaviour
         transform.position += new Vector3(horizontal, vertical, 0) * Time.deltaTime * velocity;
         PlayerRotation();
 
+        candle.intensity -= attenuationSpeed * Time.deltaTime;
+        candleTime = (int) (candle.intensity * 120);
     }
 
     void PlayerMovement()
