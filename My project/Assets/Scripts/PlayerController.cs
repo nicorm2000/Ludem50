@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float rotationSpeed;
     private float horizontal;
     private float vertical;
+    UnityEvent onInteract;
+
+
     void Start()
     {
 
@@ -18,6 +22,7 @@ public class PlayerController : MonoBehaviour
         PlayerMovement();
         transform.position += new Vector3(horizontal, vertical, 0) * Time.deltaTime * velocity;
         PlayerRotation();
+
     }
 
     void PlayerMovement()
@@ -35,4 +40,12 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
         }
     }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Interactive")
+        {
+            Destroy(collision.gameObject);
+        }
+    }
+
 }
