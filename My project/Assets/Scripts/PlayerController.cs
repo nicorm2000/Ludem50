@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private AudioClip[] audioClip;
+    [SerializeField] private AudioSource audioS;
     [SerializeField] private float velocity;
     [SerializeField] private float rotationSpeed;
     private float horizontal;
@@ -29,6 +31,12 @@ public class PlayerController : MonoBehaviour
         candle.intensity -= attenuationSpeed * Time.deltaTime;
         candleTime = (int) (candle.intensity * 120);
         print(candleTime);
+        if (Input.GetAxisRaw("Vertical") != 0)
+        {
+            audioS.clip = audioClip[Random.Range(0, 3)];
+            audioS.Play();
+
+        }
     }
 
     void PlayerMovement()
