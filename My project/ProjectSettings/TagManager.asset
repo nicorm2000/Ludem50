@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Interactive
   - Fuel
+  - Stairs
   layers:
   - Default
   - TransparentFX
