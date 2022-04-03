@@ -17,7 +17,6 @@ public class Fuel : MonoBehaviour
     void Start()
     {
         textPick.gameObject.SetActive(false);
-
         gameObject.SetActive(false);
         GetRandomFuel();
     }
