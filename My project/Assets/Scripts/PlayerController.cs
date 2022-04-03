@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private GameObject[] monsters;
     [SerializeField] private AudioClip[] audioClip;
     [SerializeField] private AudioSource audioS;
     [SerializeField] private float velocity;
@@ -12,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private float horizontal;
     private float vertical;
     private Rigidbody2D rb;
+    private float monsterdistance;
 
 
     void Start()
@@ -24,11 +26,8 @@ public class PlayerController : MonoBehaviour
         PlayerMovement();
         transform.position += new Vector3(horizontal, vertical, 0) * Time.deltaTime * velocity;
         PlayerRotation();
-
-        //candle.intensity -= attenuationSpeed * Time.deltaTime;
-        //candleTime = (int) (candle.intensity * 120);
-        //print(candleTime);
-
+        MonsterActivate();
+        MonsterDeactivate();
         //if (Input.GetAxisRaw("Vertical") != 0)
         //{
         //    audioS.clip = audioClip[Random.Range(0, 3)];
@@ -50,6 +49,31 @@ public class PlayerController : MonoBehaviour
         {
             Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, movementDirection);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        }
+    }
+
+
+    void MonsterActivate()
+    {
+        for (int i = 0; i < 1; i++)
+        {
+            monsterdistance = Vector3.Distance(transform.position, monsters[i].transform.position);
+            if (monsterdistance > 7f)
+            {
+                monsters[i].SetActive(true);
+            }
+        }
+    }
+
+    void MonsterDeactivate()
+    {
+        for (int i = 0; i < 1; i++)
+        {
+            monsterdistance = Vector3.Distance(transform.position, monsters[i].transform.position);
+            if (monsterdistance < 7f)
+            {
+                monsters[i].SetActive(false);
+            }
         }
     }
 }

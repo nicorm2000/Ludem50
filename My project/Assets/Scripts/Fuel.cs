@@ -12,6 +12,7 @@ public class Fuel : MonoBehaviour
     [SerializeField] private Light candle;
     [SerializeField] private float attenuationSpeed;
     private int candleTime;
+    [SerializeField] private GameObject candleBar;
 
     void Start()
     {
@@ -33,7 +34,8 @@ public class Fuel : MonoBehaviour
 
         candle.intensity -= attenuationSpeed * Time.deltaTime;
         candleTime = (int) (candle.intensity * 120);
-        print(candleTime);
+        candleBar.transform.position = new Vector3((7.5f)*(candleTime) - 450, 560, 0);
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
