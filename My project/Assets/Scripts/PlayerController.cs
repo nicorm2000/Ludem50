@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-
+        
     }
 
     void Update()
@@ -31,12 +31,12 @@ public class PlayerController : MonoBehaviour
         candle.intensity -= attenuationSpeed * Time.deltaTime;
         candleTime = (int) (candle.intensity * 120);
         print(candleTime);
-        if (Input.GetAxisRaw("Vertical") != 0)
-        {
-            audioS.clip = audioClip[Random.Range(0, 3)];
-            audioS.Play();
+        //if (Input.GetAxisRaw("Vertical") != 0)
+        //{
+        //    audioS.clip = audioClip[Random.Range(0, 3)];
+        //    audioS.Play();
 
-        }
+        //}
     }
 
     void PlayerMovement()
