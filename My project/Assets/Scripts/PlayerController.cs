@@ -11,15 +11,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float rotationSpeed;
     private float horizontal;
     private float vertical;
-    [SerializeField] private Light candle;
-    [SerializeField] private float attenuationSpeed;
-    private int candleTime;
     private Rigidbody2D rb;
 
 
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -28,9 +25,10 @@ public class PlayerController : MonoBehaviour
         transform.position += new Vector3(horizontal, vertical, 0) * Time.deltaTime * velocity;
         PlayerRotation();
 
-        candle.intensity -= attenuationSpeed * Time.deltaTime;
-        candleTime = (int) (candle.intensity * 120);
-        print(candleTime);
+        //candle.intensity -= attenuationSpeed * Time.deltaTime;
+        //candleTime = (int) (candle.intensity * 120);
+        //print(candleTime);
+
         //if (Input.GetAxisRaw("Vertical") != 0)
         //{
         //    audioS.clip = audioClip[Random.Range(0, 3)];

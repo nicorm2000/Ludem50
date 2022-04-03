@@ -9,10 +9,16 @@ public class Fuel : MonoBehaviour
     private bool deactivate;
     [SerializeField] private GameObject[] fuel;
     [SerializeField] private TextMeshProUGUI textPick;
+    [SerializeField] private Light candle;
+    [SerializeField] private float attenuationSpeed;
+    private int candleTime;
 
     void Start()
     {
         textPick.gameObject.SetActive(false);
+
+        gameObject.SetActive(false);
+        GetRandomFuel();
     }
 
     // Update is called once per frame
@@ -21,7 +27,13 @@ public class Fuel : MonoBehaviour
         if (deactivate && Input.GetKeyDown(KeyCode.E))
         {
             gameObject.SetActive(false);
+            GetRandomFuel();
+            candle.intensity = 1;
         }
+
+        candle.intensity -= attenuationSpeed * Time.deltaTime;
+        candleTime = (int) (candle.intensity * 120);
+        print(candleTime);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -40,5 +52,23 @@ public class Fuel : MonoBehaviour
         }
 
         deactivate = false;
+    }
+
+    private void GetRandomFuel()
+    {
+        int rand = Random.Range(0, 4);
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (i == rand)
+            {
+                fuel[i].SetActive(true);
+            }
+            else
+            {
+                fuel[i].SetActive(false);
+            }
+        }
+
     }
 }
