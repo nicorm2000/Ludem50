@@ -20,7 +20,7 @@ public class Interactible : MonoBehaviour
     {
         if (isDestroyable && Input.GetKeyDown(KeyCode.E))
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
