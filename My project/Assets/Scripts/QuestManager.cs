@@ -6,6 +6,9 @@ public class QuestManager : MonoBehaviour
     [SerializeField] private GameObject[] teddy;
 
     [SerializeField] private GameObject quest;
+    [SerializeField] private GameObject[] page;
+    private int pagesMan = 0;
+    [SerializeField] private int current = 0;
 
     [SerializeField] private bool questMenuOpen = false;
 
@@ -33,24 +36,30 @@ public class QuestManager : MonoBehaviour
 
     public void StartQuest()
     {
-        for (int i = 0; i < questTexts.Length; i++)
+        // Swap quests and toy appear
+        if (!teddy[current].activeInHierarchy)
         {
-            if (questTexts[i].gameObject.activeInHierarchy)
-            {
-                if (!teddy[i].gameObject.activeInHierarchy)
-                {
-                    teddy[i + 1].SetActive(true);
-
-                    questTexts[i].gameObject.SetActive(false);
-                    questCompleted[i].gameObject.SetActive(true);
-                }
-            }
-
-            if (questCompleted[i].gameObject.activeInHierarchy && Input.GetKeyDown(KeyCode.P))
-            {
-                questCompleted[i].gameObject.SetActive(false);
-                questTexts[i + 1].gameObject.SetActive(true);
-            }
+            current++;
         }
+        teddy[current].SetActive(true);
+        
+        // Print quest completed true or false
+        for (int i = 0; i < current; i++)
+        {
+            questTexts[i].gameObject.SetActive(false);
+            questCompleted[i].gameObject.SetActive(true);
+        }
+    }
+
+    public void PageIncrease()
+    {
+        page[pagesMan].gameObject.SetActive(false);
+
+        if (pagesMan < 2)
+        {
+            pagesMan++;
+        }
+        else{ pagesMan = 0; }
+        page[pagesMan].gameObject.SetActive(true);
     }
 }

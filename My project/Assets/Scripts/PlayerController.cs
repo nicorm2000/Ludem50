@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private float monsterdistance;
     private float eyesdistance;
+    [SerializeField] private SpriteRenderer[] monsColor;
+            private Color alphaMod;
 
 
     void Start()
@@ -60,10 +62,11 @@ public class PlayerController : MonoBehaviour
         for (int i = 0; i < 6; i++)
         {
             monsterdistance = Vector3.Distance(transform.position, monsters[i].transform.position);
-            if (monsterdistance > 5f)
-            {
-                monsters[i].SetActive(true);
-            }
+
+            alphaMod = monsColor[i].color;
+            alphaMod.a = 0.28f * monsterdistance - 1.3f;
+
+            monsColor[i].color = alphaMod;
 
             eyesdistance = Vector3.Distance(transform.position, eyes[i].transform.position);
             if (eyesdistance > 5f)
@@ -75,19 +78,19 @@ public class PlayerController : MonoBehaviour
 
     void MonsterDeactivate()
     {
-        for (int i = 0; i < 6; i++)
-        {
-            monsterdistance = Vector3.Distance(transform.position, monsters[i].transform.position);
-            if (monsterdistance < 5f)
-            {
-                monsters[i].SetActive(false);
-            }
-
-            eyesdistance = Vector3.Distance(transform.position, eyes[i].transform.position);
-            if (eyesdistance < 5f)
-            {
-                eyes[i].SetActive(true);
-            }
-        }
+        //for (int i = 0; i < 6; i++)
+        //{
+        //    monsterdistance = Vector3.Distance(transform.position, monsters[i].transform.position);
+        //    if (monsterdistance < 5f)
+        //    {
+        //        monsters[i].SetActive(false);
+        //    }
+        //
+        //    eyesdistance = Vector3.Distance(transform.position, eyes[i].transform.position);
+        //    if (eyesdistance < 5f)
+        //    {
+        //        eyes[i].SetActive(true);
+        //    }
+        //}
     }
 }
