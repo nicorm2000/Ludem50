@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Experimental.Rendering.Universal;
+using UnityEngine.SceneManagement;
+
 
 public class Fuel : MonoBehaviour
 {
@@ -36,6 +38,10 @@ public class Fuel : MonoBehaviour
         candleTime = (int) (candle.intensity * 120);
         candleBar.transform.position = new Vector3((7.5f)*(candleTime) - 450, 560, 0);
 
+        if (candleTime == 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
