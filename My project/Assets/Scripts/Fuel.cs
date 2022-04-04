@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class Fuel : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Fuel : MonoBehaviour
     private bool deactivate;
     [SerializeField] private GameObject[] fuel;
     [SerializeField] private TextMeshProUGUI textPick;
-    [SerializeField] private Light candle;
+    [SerializeField] private Light2D candle;
     [SerializeField] private float attenuationSpeed;
     private int candleTime;
     [SerializeField] private GameObject candleBar;

@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private GameObject[] monsters;
+    [SerializeField] private GameObject[] eyes;
     [SerializeField] private AudioClip[] audioClip;
     [SerializeField] private AudioSource audioS;
     [SerializeField] private float velocity;
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private float vertical;
     private Rigidbody2D rb;
     private float monsterdistance;
+    private float eyesdistance;
 
 
     void Start()
@@ -55,24 +57,36 @@ public class PlayerController : MonoBehaviour
 
     void MonsterActivate()
     {
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 6; i++)
         {
             monsterdistance = Vector3.Distance(transform.position, monsters[i].transform.position);
-            if (monsterdistance > 7f)
+            if (monsterdistance > 5f)
             {
                 monsters[i].SetActive(true);
+            }
+
+            eyesdistance = Vector3.Distance(transform.position, eyes[i].transform.position);
+            if (eyesdistance > 5f)
+            {
+                eyes[i].SetActive(false);
             }
         }
     }
 
     void MonsterDeactivate()
     {
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 6; i++)
         {
             monsterdistance = Vector3.Distance(transform.position, monsters[i].transform.position);
-            if (monsterdistance < 7f)
+            if (monsterdistance < 5f)
             {
                 monsters[i].SetActive(false);
+            }
+
+            eyesdistance = Vector3.Distance(transform.position, eyes[i].transform.position);
+            if (eyesdistance < 5f)
+            {
+                eyes[i].SetActive(true);
             }
         }
     }
