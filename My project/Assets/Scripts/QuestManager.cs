@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class QuestManager : MonoBehaviour
 {
+    [SerializeField] private GameObject goodEnding;
     [SerializeField] private GameObject[] teddy;
 
     [SerializeField] private GameObject quest;
@@ -32,12 +33,18 @@ public class QuestManager : MonoBehaviour
         }
 
         StartQuest();
+
+        if (current > 8)
+        {
+            Time.timeScale = 0f;
+            goodEnding.SetActive(true);
+        }
     }
 
     public void StartQuest()
     {
         // Swap quests and toy appear
-        if (!teddy[current].activeInHierarchy)
+        if (!teddy[current].activeSelf)
         {
             current++;
         }
