@@ -35,22 +35,23 @@ public class PlayerController : MonoBehaviour
         MonsterDeactivate();
 
         // Set Animations
-        if (Input.GetKeyDown(KeyCode.D))
+        if (horizontal > 0)
         {
             Anim.SetInteger("Anim", 2);
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if (horizontal < 0)
         {
             Anim.SetInteger("Anim", -2);
         }
-        else if (Input.GetKeyDown(KeyCode.W))
+        else if (vertical > 0)
         {
             Anim.SetInteger("Anim", 1);
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if (vertical < 0)
         {
             Anim.SetInteger("Anim", -1);
         }
+        else { Anim.SetInteger("Anim", 0); }
 
         //if (Input.GetAxisRaw("Vertical") != 0)
         //{
