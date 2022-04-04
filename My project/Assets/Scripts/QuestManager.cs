@@ -35,6 +35,7 @@ public class QuestManager : MonoBehaviour
         StartQuest();
     }
 
+<<<<<<< HEAD
     public void StartQuest()
     {
         if (current >= 8 && !teddy[8].activeSelf)
@@ -43,6 +44,17 @@ public class QuestManager : MonoBehaviour
             goodEnding.SetActive(true);
         }
 
+=======
+    }
+
+    public void StartQuest()
+    {
+        if (current > 7)
+        {
+            Time.timeScale = 0f;
+            goodEnding.SetActive(true);
+        }
+>>>>>>> cd9ef27c0643c38719b508cea0fe45a0946bc8bd
         // Swap quests and toy appear
         if (current <= 8)
         {
@@ -52,13 +64,17 @@ public class QuestManager : MonoBehaviour
             }
             teddy[current].SetActive(true);
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> cd9ef27c0643c38719b508cea0fe45a0946bc8bd
         // Print quest completed true or false
         for (int i = 0; i < current; i++)
         {
             questTexts[i].gameObject.SetActive(false);
             questCompleted[i].gameObject.SetActive(true);
         }
+        teddy[current].SetActive(true);
     }
 
     public void PageIncrease()
