@@ -40,6 +40,7 @@ public class QuestManager : MonoBehaviour
                 if (!teddy[i].gameObject.activeInHierarchy)
                 {
                     teddy[i + 1].SetActive(true);
+
                     questTexts[i].gameObject.SetActive(false);
                     questCompleted[i].gameObject.SetActive(true);
                 }
