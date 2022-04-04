@@ -33,25 +33,28 @@ public class QuestManager : MonoBehaviour
         }
 
         StartQuest();
-
-        if (current >= 8)
-        {
-            Time.timeScale = 0f;
-            goodEnding.SetActive(true);
-        }
     }
 
     public void StartQuest()
     {
-        // Swap quests and toy appear
-        if (!teddy[current].activeSelf)
+        if (current >= 8 && !teddy[8].activeSelf)
         {
-            current++;
+            Time.timeScale = 0f;
+            goodEnding.SetActive(true);
         }
-        teddy[current].SetActive(true);
-        
+
+        // Swap quests and toy appear
+        if (current <= 8)
+        {
+            if (!teddy[current].activeSelf)
+            {
+                current++;
+            }
+            teddy[current].SetActive(true);
+        }
+
         // Print quest completed true or false
-        for (int i = 0; i <= current; i++)
+        for (int i = 0; i < current; i++)
         {
             questTexts[i].gameObject.SetActive(false);
             questCompleted[i].gameObject.SetActive(true);
@@ -66,7 +69,7 @@ public class QuestManager : MonoBehaviour
         {
             pagesMan++;
         }
-        else{ pagesMan = 0; }
+        else { pagesMan = 0; }
         page[pagesMan].gameObject.SetActive(true);
     }
 }
