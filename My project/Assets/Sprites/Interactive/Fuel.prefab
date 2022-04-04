@@ -49,6 +49,7 @@ MonoBehaviour:
   textPick: {fileID: 0}
   candle: {fileID: 0}
   attenuationSpeed: 0.01
+  candleBar: {fileID: 0}
 --- !u!212 &1809219262972345221
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -113,7 +114,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0007125139, y: 0.023758724}
+  m_Offset: {x: -0.017094135, y: 0.023759365}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -124,5 +125,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0770233, y: 0.9653349}
+  m_Size: {x: 3.2140107, y: 3.288456}
   m_EdgeRadius: 0

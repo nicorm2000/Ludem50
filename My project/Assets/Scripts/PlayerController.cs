@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour
     private float monsterdistance;
     private float eyesdistance;
     [SerializeField] private SpriteRenderer[] monsColor;
-            private Color alphaMod;
+    private Color alphaMod;
+    [SerializeField] private Animator Anim;
 
 
     void Start()
@@ -32,6 +33,25 @@ public class PlayerController : MonoBehaviour
         PlayerRotation();
         MonsterActivate();
         MonsterDeactivate();
+
+        // Set Animations
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            Anim.SetInteger("Anim", 2);
+        }
+        else if (Input.GetKeyDown(KeyCode.A))
+        {
+            Anim.SetInteger("Anim", -2);
+        }
+        else if (Input.GetKeyDown(KeyCode.W))
+        {
+            Anim.SetInteger("Anim", 1);
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            Anim.SetInteger("Anim", -1);
+        }
+
         //if (Input.GetAxisRaw("Vertical") != 0)
         //{
         //    audioS.clip = audioClip[Random.Range(0, 3)];
@@ -48,12 +68,12 @@ public class PlayerController : MonoBehaviour
 
     void PlayerRotation()
     {
-        Vector2 movementDirection = new Vector2(horizontal, vertical);
-        if (movementDirection != Vector2.zero)
-        {
-            Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, movementDirection);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
-        }
+        //Vector2 movementDirection = new Vector2(horizontal, vertical);
+        //if (movementDirection != Vector2.zero)
+        //{
+        //    Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, movementDirection);
+        //    transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        //}
     }
 
 
@@ -78,19 +98,19 @@ public class PlayerController : MonoBehaviour
 
     void MonsterDeactivate()
     {
-        //for (int i = 0; i < 6; i++)
-        //{
-        //    monsterdistance = Vector3.Distance(transform.position, monsters[i].transform.position);
-        //    if (monsterdistance < 5f)
-        //    {
-        //        monsters[i].SetActive(false);
-        //    }
-        //
-        //    eyesdistance = Vector3.Distance(transform.position, eyes[i].transform.position);
-        //    if (eyesdistance < 5f)
-        //    {
-        //        eyes[i].SetActive(true);
-        //    }
-        //}
+        for (int i = 0; i < 6; i++)
+        {
+            //monsterdistance = Vector3.Distance(transform.position, monsters[i].transform.position);
+            //if (monsterdistance < 5f)
+            //{
+            //    monsters[i].SetActive(false);
+            //}
+        
+            eyesdistance = Vector3.Distance(transform.position, eyes[i].transform.position);
+            if (eyesdistance < 5f)
+            {
+                eyes[i].SetActive(true);
+            }
+        }
     }
 }
