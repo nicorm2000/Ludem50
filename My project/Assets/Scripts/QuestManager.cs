@@ -34,28 +34,27 @@ public class QuestManager : MonoBehaviour
 
         StartQuest();
 
-        if (current >= 8)
-        {
-            Time.timeScale = 0f;
-            goodEnding.SetActive(true);
-        }
     }
 
     public void StartQuest()
     {
+        if (current > 7)
+        {
+            Time.timeScale = 0f;
+            goodEnding.SetActive(true);
+        }
         // Swap quests and toy appear
         if (!teddy[current].activeSelf)
         {
             current++;
         }
-        teddy[current].SetActive(true);
-        
         // Print quest completed true or false
-        for (int i = 0; i <= current; i++)
+        for (int i = 0; i < current; i++)
         {
             questTexts[i].gameObject.SetActive(false);
             questCompleted[i].gameObject.SetActive(true);
         }
+        teddy[current].SetActive(true);
     }
 
     public void PageIncrease()
