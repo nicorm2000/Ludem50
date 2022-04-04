@@ -38,7 +38,7 @@ public class Fuel : MonoBehaviour
         candleTime = (int) (candle.intensity * 120);
         candleBar.transform.position = new Vector3((7.5f)*(candleTime) - 450, 560, 0);
 
-        if (candleTime == 0)
+        if (candleTime <= 0)
         {
             SceneManager.LoadScene("GameOver");
         }

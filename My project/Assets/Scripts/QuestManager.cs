@@ -34,7 +34,7 @@ public class QuestManager : MonoBehaviour
 
         StartQuest();
 
-        if (current > 8)
+        if (current >= 8)
         {
             Time.timeScale = 0f;
             goodEnding.SetActive(true);
@@ -51,7 +51,7 @@ public class QuestManager : MonoBehaviour
         teddy[current].SetActive(true);
         
         // Print quest completed true or false
-        for (int i = 0; i < current; i++)
+        for (int i = 0; i <= current; i++)
         {
             questTexts[i].gameObject.SetActive(false);
             questCompleted[i].gameObject.SetActive(true);
