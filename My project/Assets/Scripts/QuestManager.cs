@@ -38,15 +38,19 @@ public class QuestManager : MonoBehaviour
 
     public void StartQuest()
     {
-        if (current > 7)
+        if (current > 7 && !teddy[8].activeSelf)
         {
             Time.timeScale = 0f;
             goodEnding.SetActive(true);
         }
         // Swap quests and toy appear
-        if (!teddy[current].activeSelf)
+        if (current <= 8) 
         {
-            current++;
+            if (!teddy[current].activeSelf && current <= 8)
+            {
+                current++;
+            }
+            teddy[current].SetActive(true);
         }
         // Print quest completed true or false
         for (int i = 0; i < current; i++)
@@ -54,7 +58,6 @@ public class QuestManager : MonoBehaviour
             questTexts[i].gameObject.SetActive(false);
             questCompleted[i].gameObject.SetActive(true);
         }
-        teddy[current].SetActive(true);
     }
 
     public void PageIncrease()
